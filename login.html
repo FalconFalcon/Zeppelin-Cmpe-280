@@ -9,11 +9,12 @@
     <meta name="author" content="">
 
     <title>Fitness Evaluator</title>
-    <link href="css/zeppelin.css" rel="stylesheet">
+    <link href="/css/zeppelin.css" rel="stylesheet">
 
+    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
+    
 
-
-    <link href="css/zeppelin.min.css" rel="stylesheet">
+    <link href="/css/zeppelin.min.css" rel="stylesheet">
 
 
     <script>
@@ -42,14 +43,14 @@
 
 <h2>Login</h2>
 
-                <form name="myForm" onsubmit="return validateform()">
+                <form name="myForm"  action="/login"  method="POST" onsubmit="return validateform()">
                   <div class="form-group">
                     <label for="userid">Username:</label>
                     <input type="text" name="userid"class="form-control" id="userid">
                   </div>
                   <div class="form-group">
                     <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd">
+                    <input type="password" name="password" class="form-control" id="pwd">
                   </div>
                   <div class="checkbox">
                     <label><input type="checkbox"> Remember me</label>
