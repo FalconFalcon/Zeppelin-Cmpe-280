@@ -10,20 +10,35 @@
 
     <title>Fitness Evaluator</title>
     <link href="/css/zeppelin.css" rel="stylesheet">
-
-    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
-    
-
     <link href="/css/zeppelin.min.css" rel="stylesheet">
-
 
     <script>
     function validateForm() {
+    //Regular expression to check if username contains only alphanumeric characters
+    var regex_alphanumeric=/^[a-z0-9]+$/i;
+    // Regular expression to ensure that password contains: 
+    // 1. Atleast 6 characters and maximum 16 characters.
+    // 2. It must contain atleast one number.
+    // 3. It must contain atleast one special character.
+    var regex_password = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
     var x = document.forms["myForm"]["userid"].value;
-    if (x == "") {
-        alert("Name must be filled out");
-        return false;
+    var y = document.forms["myForm"]["pwd"].value;
+    //Checking if username and password fields are empty
+    if(x=="" || y==""){
+      alert("Please enter both username and password");
+      return false;
     }
+    //Checking if username contains only alphanumeric characters 
+    else if(!(x.match(regex_alphanumeric))){
+      alert("Username must contain only alphanumeric characters");
+      return false;
+    }
+    //Checking if password meet requirements or not
+    else if(!(y.match(regex_password))){
+      alert("password must contains atleast 6 characters and maximum 16 characters, must contain atleast one number, and must contain atleast one special character.");
+      return false;
+    }
+    return true;
 }
     </script>
   </head>
@@ -39,11 +54,11 @@
               <h2>Fitness Evaluator</h2>
               <p class="intro-text">A Fitness Evaluation Web-app.
                 <br>that uses your fitbit data.</p>
-<br><br><br><br>
+                <br><br><br><br>
 
-<h2>Login</h2>
+                <h2>Login</h2>
 
-                <form name="myForm"  action="/login"  method="POST" onsubmit="return validateform()">
+                <form name="myForm" onsubmit="return validateForm()" action="/login"  method="POST" >
                   <div class="form-group">
                     <label for="userid">Username:</label>
                     <input type="text" name="userid"class="form-control" id="userid">
@@ -55,7 +70,7 @@
                   <div class="checkbox">
                     <label><input type="checkbox"> Remember me</label>
                   </div>
-                  <button type="submit" class="btn btn-default">Submit</button>
+                  <button type="submit" class="btn btn-default" >Submit</button>
                 </form>
              
             </div>
@@ -72,11 +87,5 @@
         <p>Copyright &copy; Zeppelin 2017</p>
       </div>
     </footer>
-
-
-
-
-
   </body>
-
 </html>

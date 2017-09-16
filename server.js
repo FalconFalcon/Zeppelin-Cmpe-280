@@ -4,7 +4,7 @@ const path = require('path');
 const http = require('http');
 const app = express();
 const sessions=require('express-session');
-
+var validator = require('validator');
 var session;
 
 
@@ -38,19 +38,18 @@ app.get('/login', (req, res) => {
 
 
 app.post('/login', (req, res) => {
-    //res.end(JSON.stringify(req.body));
     session=req.session;
-
     console.log(req.body.userid);
     console.log(req.body.pwd);
-    if(req.body.userid=='admin'&&req.body.password=='admin')
+    if(req.body.userid=='admin'&&req.body.password=='Admin@123')
     {
         console.log("Succesfully Logged In!!");
         res.redirect('/admin');
-       // session.id=req.body.userid;
     }
-    else res.end('Sorry Wrong Username or Password');
-    //res.redirect('/redirects');
+    else{ 
+        console.log("Wrong username or password.");
+        res.redirect('/login');
+    }
 });
 
 app.get('/admin', (req, res) => {
