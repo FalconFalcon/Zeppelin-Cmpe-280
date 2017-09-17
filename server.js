@@ -7,21 +7,12 @@ const app = express();
 var validator = require('validator');
 
 
-
-
-// Parsers
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
 
 
 app.use(express.static('public'));
-
-
-
-
-
-// Send all other requests to the Angular app
 
 
 app.get('/', (req, res) => {
