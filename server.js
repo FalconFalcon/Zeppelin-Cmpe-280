@@ -3,9 +3,9 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const http = require('http');
 const app = express();
-const sessions=require('express-session');
+
 var validator = require('validator');
-var session;
+
 
 
 
@@ -18,11 +18,6 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(express.static('public'));
 
 
-app.use(sessions({
-    secret:'123456',
-    resave:false,
-    saveUninitialized:true
-}))
 
 
 
@@ -38,7 +33,7 @@ app.get('/login', (req, res) => {
 
 
 app.post('/login', (req, res) => {
-    session=req.session;
+   
     console.log(req.body.userid);
     console.log(req.body.pwd);
     if(req.body.userid=='admin'&&req.body.password=='Admin@123')
