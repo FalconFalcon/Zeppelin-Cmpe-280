@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const http = require('http');
+const jquery=require('jquery');
 const app = express();
 
 var validator = require('validator');
@@ -9,7 +10,7 @@ var validator = require('validator');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
-
+app.use(express.static('js'));
 
 
 app.use(express.static('public'));
@@ -30,22 +31,36 @@ app.post('/login', (req, res) => {
     if(req.body.userid=='admin'&&req.body.password=='Admin@123')
     {
         console.log("Succesfully Logged In!!");
-        res.redirect('/admin');
+        res.redirect('/register');
     }
     else{ 
         console.log("Wrong username or password.");
         res.redirect('/login');
     }
 });
-
+app.post('/register',(req,res)=>{
+    console.log("shilpa");
+     res.redirect('/register');
+});
+app.get('/register',(req,res)=>{
+    // console.log("chandra");
+    // res.sendFile('register.html',{root: __dirname});
+    res.sendfile('register.html',{root: __dirname}, function(err){
+  if (err) {
+    next(err);
+  } else {
+    console.log('transferred %s', path);
+  }
+});
+});
 app.get('/admin', (req, res) => {
     res.sendFile('admin.html',{root: __dirname});
 });
-
-
 //Set Port
 const port = process.env.PORT || '3000';
 app.set('port', port);
+
+
 
 const server = http.createServer(app);
 
