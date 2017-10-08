@@ -124,7 +124,7 @@
         <div class="form-group row">
         <label class="col-2 col-form-label">Date Of Birth</label>
         <div class="col-1">
-        <input type="text" id="datepicker"></br>
+        <input type="text" class="form-control" id="datepicker"></br>
         </div>
         </div>
 
@@ -142,7 +142,8 @@
         <div class="form-group row">
             
                 <label for="amount" class="col-2 col-form-label">Water Consumption Range(litres):</label>
-                <div class="col-10">   <input type="text" id="consumption" style="border:0; color:#f6931f; font-weight:bold;">
+                <div class="col-10"> 
+                    <input type="text"class="form-control" id="consumption" style="border:0; color:#1B1A19; font-weight:bold;">
                   <div id="slider-range"></div>
             </div>
             </div>
@@ -191,8 +192,8 @@
     $( "#slider-range" ).slider({
       range: true,
       min: 0,
-      max: 500,
-      values: [ 75, 300 ],
+      max: 10,
+      values: [ 1, 2 ],
       slide: function( event, ui ) {
         $( "#consumption" ).val( "Lit" + ui.values[ 0 ] + " - Lit" + ui.values[ 1 ] );
       }
