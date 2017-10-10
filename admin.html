@@ -1,44 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+	<head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Fitness Evaluator</title>
-    <link href="/css/zeppelin.css" rel="stylesheet">
-    <link href="/css/zeppelin.min.css" rel="stylesheet">
-  </head>
-
-  <body>
-
-
-    <header class="masthead">
-      <div class="intro-body">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 mx-auto">
-              <h2>Fitness Evaluator</h2>
-              <p class="intro-text">A Fitness Evaluation Web-app.
-                <br>that uses your fitbit data.</p>
-                <br><br><br><br>
-                <h2>Succesfully Logged In!!</h2>             
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-
-
-    <!-- Footer -->
-    <footer>
-      <div class="container text-center">
-        <p>Copyright &copy; Zeppelin 2017</p>
-      </div>
-    </footer>
-  </body>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		 <link href="/css/jquery-ui.css" rel="stylesheet">
+		<title>Fitness Evaluator</title>
+		<link href="/css/zeppelin.css" rel="stylesheet">
+		<link href="/css/zeppelin.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<header class="masthead">
+			<div class="intro-body">
+				<div class="container">
+							<h2>Fitness Evaluator</h2>
+							<p class="intro-text">A Fitness Evaluation Web-app.
+								<br>that uses your fitbit data.</p>
+								<br><br>
+								<h3>Succesfully Logged In!!</h3>  
+								<h3>Please Select Activities You Wish to See On Your Dashboard</h3>           
+						</div>
+						<div id="activities" class="ui-widget-content">
+							<h3>Activities</h3>
+							<ul class="source">
+								<li class="source">Heart Rate</li>
+								<li class="source">Track The Exercise</li>
+								<li class="source">Calories Burned</li>
+								<li class="source">Steps</li>
+								<li class="source">Sleep</li>
+							</ul>
+						</div>
+							 <div id="cart" class="ui-widget-content">
+							<h3>Selected Activities</h3>
+							<ol id="items"></ol>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script  src="/js/jquery.js"></script>
+		<script src="/js/jquery-ui.js"></script>
+			<script>
+				$(document).ready(function(){
+					 $(".source li").draggable({helper:"clone"});
+					 $("#cart").droppable({drop:function(event,ui){
+							 $("#items").append($("<li></li>").text(ui.draggable.text()));
+					 }}); 
+				});
+			</script>
+		</header>
+		<!-- Footer -->
+		<footer>
+			<div class="container text-center">
+				<p>Copyright &copy; Zeppelin 2017</p>
+			</div>
+		</footer>
+	</body>
 </html>

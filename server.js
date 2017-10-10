@@ -17,36 +17,36 @@ app.use(express.static('public'));
 
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'login.html'));
+	res.sendFile(path.join(__dirname, 'login.html'));
 });
 app.get('/login', (req, res) => {
-    res.sendFile('login.html',{root: __dirname});
+	res.sendFile('login.html',{root: __dirname});
 });
 
 
 app.post('/login', (req, res) => {
-   
-    console.log(req.body.userid);
-    console.log(req.body.pwd);
-    if(req.body.userid=='admin'&&req.body.password=='Admin@123')
-    {
-        console.log("Succesfully Logged In!!");
-        res.redirect('/register');
-    }
-    else{ 
-        console.log("Wrong username or password.");
-        res.redirect('/login');
-    }
+	
+	console.log(req.body.userid);
+	console.log(req.body.pwd);
+	if(req.body.userid=='admin'&&req.body.password=='Admin@123')
+	{
+		console.log("Succesfully Logged In!!");
+		res.redirect('/admin');
+	}
+	else{ 
+		console.log("Wrong username or password.");
+		res.redirect('/login');
+	}
 });
 app.post('/register',(req,res)=>{
-    console.log("shilpa");
-     res.redirect('/register');
+	console.log("shilpa");
+	res.redirect('/register');
 });
 app.get('/admin', (req, res) => {
-    res.sendFile('admin.html',{root: __dirname});
+	res.sendFile('admin.html',{root: __dirname});
 });
 app.get('/contacts', (req, res) => {
-    res.sendFile('contacts.txt',{root: __dirname});
+	res.sendFile('contacts.txt',{root: __dirname});
 });
 //Set Port
 const port = process.env.PORT || '3000';
