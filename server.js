@@ -42,19 +42,11 @@ app.post('/register',(req,res)=>{
     console.log("shilpa");
      res.redirect('/register');
 });
-app.get('/register',(req,res)=>{
-    // console.log("chandra");
-    // res.sendFile('register.html',{root: __dirname});
-    res.sendfile('register.html',{root: __dirname}, function(err){
-  if (err) {
-    next(err);
-  } else {
-    console.log('transferred %s', path);
-  }
-});
-});
 app.get('/admin', (req, res) => {
     res.sendFile('admin.html',{root: __dirname});
+});
+app.get('/contacts', (req, res) => {
+    res.sendFile('contacts.txt',{root: __dirname});
 });
 //Set Port
 const port = process.env.PORT || '3000';

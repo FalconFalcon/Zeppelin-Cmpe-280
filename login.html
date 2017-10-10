@@ -125,7 +125,7 @@
 
         <div class="form-group row">
         <label class="col-2 col-form-label">Date Of Birth</label>
-        <div class="col-1">
+        <div class="col-5">
         <input type="text" class="form-control" id="datepicker"></br>
         </div>
         </div>
@@ -175,7 +175,7 @@
 <div id="box">
   <h2>Click button to load new content inside  box</h2>
 </div>
-<button type="button">Load Info</button>
+<button type="button" class="btn btn-default" id="load_info">Load Info</button>
 
 
 </div>
@@ -200,7 +200,11 @@
     <script src="/js/jquery-ui.js"></script>
   
     <script>
-    
+    $(document).ready(function() {
+    $("#load_info").click(function() {
+        $('#box').load('contacts');
+    });
+}); 
     $( "#slider-range" ).slider({
       range: true,
       min: 0,
