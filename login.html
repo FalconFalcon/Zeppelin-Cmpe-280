@@ -172,12 +172,14 @@
 <p> This web application is being made by Team Zeppelin.When fully functional it will allow a fitbit user to see his/her daily activities such as heart beat,water consumption,steps walked etc.</p>
 <p>The button below makes an AJAX call and loads the data present in contacts.txt file and renders the data in the div tag.</p>
 
-<div id="box">
-  <h2>Click button to load new content inside  box</h2>
-</div>
-<button type="button" class="btn btn-default" id="load_info">Load Info</button>
-
-
+<div id="box" class="ui-widget-content">
+  <h3>Click button to View Team Details</h3>
+</div></br>
+<button type="button" class="btn btn-default" id="load_info">Load Info</button></br></br>
+<!-- <div id="resizable" class="ui-widget-content" class="resizable"> -->
+<h3>Feedback</h3>
+<textarea id="resizable" class="ui-widget-content" rows="5" cols="20" placeholder="Please Enter You Feedback"></textarea>
+<!-- </div> -->
 </div>
 
 
@@ -200,6 +202,19 @@
     <script src="/js/jquery-ui.js"></script>
   
     <script>
+//     $(function() {
+//      // $( ".resizable" ).resizable();
+//      $( ".draggable" ).draggable();
+// });
+    $( function() {
+    $( "#box" ).draggable({
+
+    });
+  } );
+    $( function() {
+    $( "#resizable" ).resizable({
+    });
+  } );
     $(document).ready(function() {
     $("#load_info").click(function() {
         $('#box').load('contacts');
