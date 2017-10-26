@@ -11,6 +11,8 @@
     <title>Fitness Evaluator</title>
     <link href="/css/zeppelin.css" rel="stylesheet">
     <link href="/css/zeppelin.min.css" rel="stylesheet">
+
+   
   </head>
 
   <body>
@@ -24,8 +26,22 @@
               <h2>Fitness Evaluator</h2>
               <p class="intro-text">A Fitness Evaluation Web-app.
                 <br>that uses your fitbit data.</p>
-                <br><br><br><br>
-                <h2>Succesfully Logged In!!</h2>             
+               
+
+                <h2>List Of Users</h2>
+
+                <% for (var i in users) { %>
+
+                <%= users[i].firstname %>
+                <%= users[i].lastname %>
+                <%= users[i].email %>
+                </br>
+
+                <% } %>
+          
+                  
+                
+             
             </div>
           </div>
         </div>
