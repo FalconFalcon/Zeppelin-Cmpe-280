@@ -4,7 +4,7 @@
   "description": "A fitbit App",
   "main": "index.html",
   "scripts": {
-    "dev":"nodemon server.js",
+    "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/FalconFalcon/Zeppelin-Cmpe-280/issues"
   },
-  "homepage": "https://github.com/FalconFalcon/Zeppelin-Cmpe-280#readme"
+  "homepage": "https://github.com/FalconFalcon/Zeppelin-Cmpe-280#readme",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "mongodb": "^2.2.33",
+    "validator": "^9.1.1"
+  }
 }
