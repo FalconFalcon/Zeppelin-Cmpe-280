@@ -119,7 +119,7 @@ app.post('/login', (req, res) => {
         }
       };
 
-
+app.post
 app.get('/register', (req, res) => {
     console.log("Working");
     res.render('register.ejs');
@@ -267,6 +267,12 @@ app.post('/delete-user', (req, res) => {
 
 
 
+
+});
+
+app.get('/logout', (req, res) => {
+    req.session.reset();
+    res.redirect('/');
 
 });
 
