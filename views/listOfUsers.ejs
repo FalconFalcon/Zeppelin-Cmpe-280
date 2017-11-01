@@ -11,7 +11,9 @@
     <title>Fitness Evaluator</title>
     <link href="/css/zeppelin.css" rel="stylesheet">
     <link href="/css/zeppelin.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    
    
   </head>
 
@@ -31,12 +33,13 @@
                 <h2>List Of Users</h2>
 
                 <% for (var i in users) { %>
-
-                <%= users[i].firstname %>
-                <%= users[i].lastname %>
-                <%= users[i].email %>
-                </br>
-
+<table class="w3-table-all w3-hoverable">
+              <tr> <td> <%= users[i].firstname %>   </td>
+                <td>  <%= users[i].lastname %></td>
+                <td>  <%= users[i].email %></td>
+              </tr>
+               
+</table>
                 <% } %>
 
             </br>
