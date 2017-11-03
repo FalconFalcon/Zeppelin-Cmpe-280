@@ -150,6 +150,11 @@ app.post('/register', (req, res) => {
 
 app.post('/post-register', (req, res) => {
 
+
+    var query = {
+        email: req.body.email
+
+    };
     var db = req.db1;
     var obj = {
         firstname: req.body.firstname,
@@ -158,6 +163,21 @@ app.post('/post-register', (req, res) => {
         password: req.body.password
 
     };
+
+    console.log("Ffffffffffffff");
+    db.collection("Zeppelin").findOne(query, (err, user) => {
+        console.log(user);
+        if (user.email == req.body.email) {
+            console.log("Ffffffffffffff");
+            res.render('index.ejs', { error: 'User Already Registered.' });
+        }
+
+
+
+
+
+    });
+
 
 
     db.collection('Zeppelin').insert(obj, (err, result) => {
