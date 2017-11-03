@@ -1,69 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>Fitness Evaluator</title>
-    <link href="/css/zeppelin.css" rel="stylesheet">
-    <link href="/css/zeppelin.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-    
-   
-  </head>
-
-  <body>
+  <title>Fitness Evaluator</title>
+  <link href="/css/zeppelin.css" rel="stylesheet">
+  <link href="/css/zeppelin.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 
 
-    <header class="masthead">
-      <div class="intro-body">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 mx-auto">
-              <h2>Fitness Evaluator</h2>
-              <p class="intro-text">A Fitness Evaluation Web-app.
-                <br>that uses your fitbit data.</p>
-               
+</head>
 
-                <h2>List Of Users</h2>
+<body>
 
-                <% for (var i in users) { %>
-<table class="w3-table-all w3-hoverable">
-              <tr> <td> <%= users[i].firstname %>   </td>
-                <td>  <%= users[i].lastname %></td>
-                <td>  <%= users[i].email %></td>
+
+  <header class="masthead">
+    <div class="intro-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>Fitness Evaluator</h2>
+            <p class="intro-text">A Fitness Evaluation Web-app.
+              <br>that uses your fitbit data.</p>
+
+
+            <h2>List Of Users</h2>
+
+            <table class="w3-table w3-centered w3-border w3-bordered w3-striped w3-hoverable">
+              <tr class="w3-red">
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
               </tr>
-               
-</table>
+              <% for (var i in users) { %>
+
+                <tr class="w3-text-white">
+                  <td style>
+                    <%= users[i].firstname %>
+                  </td>
+                  <td>
+                    <%= users[i].lastname %>
+                  </td>
+                  <td>
+                    <%= users[i].email %>
+                  </td>
+                </tr>
+
+
                 <% } %>
+            </table>
 
             </br>
-                <form action="/" method="GET" >
-                    <button type="submit" class="btn btn-default">Login</button>  
-                  
-                      </form>
-          
-                  
-                
-             
-            </div>
+            <form action="/" method="GET">
+              <button type="submit" class="btn btn-default">Login</button>
+
+            </form>
+
+
+
+
           </div>
         </div>
       </div>
-    </header>
+    </div>
+  </header>
 
 
 
-    <!-- Footer -->
-    <footer>
-      <div class="container text-center">
-        <p>Copyright &copy; Zeppelin 2017</p>
-      </div>
-    </footer>
-  </body>
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center">
+      <p>Copyright &copy; Zeppelin 2017</p>
+    </div>
+  </footer>
+</body>
+
 </html>
