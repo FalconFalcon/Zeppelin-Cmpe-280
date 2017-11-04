@@ -76,10 +76,7 @@ app.post('/', (req, res) => {
     res.render('index.ejs', { error: 'Invalid email or password.' });
 
 });
-app.get('/login', (req, res) => {
-    res.render('index.ejs', { error: '' });
 
-});
 
 app.post('/login', (req, res) => {
 
@@ -101,7 +98,7 @@ app.post('/login', (req, res) => {
 
         else {
             if (req.body.password === user.password) {
-                // sets a cookie with the user's info
+           
                 req.session.user = user;
                 res.redirect('/dashboard');
             }
@@ -167,25 +164,28 @@ app.post('/post-register', (req, res) => {
     console.log("Ffffffffffffff");
     db.collection("Zeppelin").findOne(query, (err, user) => {
         console.log(user);
-        if (user.email == req.body.email) {
+
+        if (user&& user.email==req.body.email) {
             console.log("Ffffffffffffff");
             res.render('index.ejs', { error: 'User Already Registered.' });
         }
 
 
+        else {
+            db.collection('Zeppelin').insert(obj, (err, result) => {
+                console.log("Ffffffffffffff");
+                if (err) return console.log(err)
+        
+                console.log('saved to database');
+                res.render('index.ejs', { error: 'User Succesfully Registered!!Log in!!' });
+            });
 
 
+        }
 
-    });
+ });
 
 
-
-    db.collection('Zeppelin').insert(obj, (err, result) => {
-        if (err) return console.log(err)
-
-        console.log('saved to database')
-        res.render('index.ejs', { error: 'User Succesfully Registered!!Log in!!' })
-    });
 
 
 });
