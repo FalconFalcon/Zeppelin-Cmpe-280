@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const http = require('http');
 const app = express();
-
+const bcrypt=require('bcrypt');
 const monk = require('monk');
 const var2 = "sidgore:sidgore@sidmongo-shard-00-00-uesva.mongodb.net:27017,sidmongo-shard-00-01-uesva.mongodb.net:27017,sidmongo-shard-00-02-uesva.mongodb.net:27017/Zeppelin?ssl=true&replicaSet=SidMongo-shard-0&authSource=admin";
 const db1 = monk(var2);
@@ -82,23 +82,26 @@ app.post('/login', (req, res) => {
 
     var db = req.db1;
     var query = {
-        email: req.body.email,
-        password: req.body.password
+        email: req.body.email
+
 
     };
 
+    var password=req.body.password;
 
 
     db.collection("Zeppelin").findOne(query, (err, user) => {
 
         if (!user) {
-            console.log("Ffffffffffffff");
+           
             res.render('index.ejs', { error: 'Invalid email or password.' });
         }
 
         else {
-            if (req.body.password === user.password) {
-           
+            var hash = user.password;
+            bcrypt.compare(password, hash, function(err, doesMatch){
+            if (doesMatch) {
+                console.log(hash);
                 req.session.user = user;
                 res.redirect('/dashboard');
             }
@@ -107,14 +110,12 @@ app.post('/login', (req, res) => {
             else {
                 res.render('index.ejs', { error: 'Invalid email or password.' });
             }
-
-        }
-
-
-
-
-    });
-
+            
+        });
+        
+    } 
+});  
+   
 });
 
 app.get('/dashboard', requireLogin, function (req, res) {
@@ -148,6 +149,11 @@ app.post('/register', (req, res) => {
 app.post('/post-register', (req, res) => {
 
 
+    bcrypt.hash(req.body.password, 5, function( err, bcryptedPassword) {
+
+      
+
+
     var query = {
         email: req.body.email
 
@@ -157,7 +163,7 @@ app.post('/post-register', (req, res) => {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         email: req.body.email,
-        password: req.body.password
+        password: bcryptedPassword
 
     };
 
@@ -185,7 +191,7 @@ app.post('/post-register', (req, res) => {
 
  });
 
-
+});
 
 
 });
